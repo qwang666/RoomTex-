@@ -22,14 +22,14 @@ For example, one can replace the prompt in the notebook with "white tv cabinet".
 
 ## Generate room mesh from sketch
 python utils/mesh/gene_room.py --cfg demo/configs/livingroom.yaml
-#### use generated room, modify the config file to add room mesh path on room_mesh_path and boundary_mesh_path
+_use generated room, modify the config file to add room mesh path on room_mesh_path and boundary_mesh_path_
 
 ## Prepare the panorama and objects inpainting view depth of the scene
 python scripts/prepare_depth.py --cfg demo/configs/livingroom.yaml
 
 ## Generate the panorama of the scene (port is the sd webui port)
 python gene_img/pano/pano_text2img.py --cfg demo/configs/livingroom.yaml --port 7860
-#### choose one and modify the config file to add the panorama path on pano_all_2K
+_choose one and modify the config file to add the panorama path on pano_all_2K_
 
 ## Refine the room panorama, modify the config file to add the empty room panorama path on pano_wall_2K
 python gene_img/pano/refine_pano.py --cfg demo/configs/livingroom.yaml --port 7860
@@ -37,7 +37,7 @@ python gene_img/pano/refine_pano.py --cfg demo/configs/livingroom.yaml --port 78
 python scripts/prepare_pers.py
 
 ## Genetate objects
-#### port is the sd webui port, id is the object id
+_port is the sd webui port, id is the object id_
 python scripts/iterative_gene.py --cfg demo/configs/livingroom.yaml --port 7860 --id 0
 python scripts/adornment_refine.py --cfg demo/configs/livingroom.yaml --port 7860 --id 0
 
