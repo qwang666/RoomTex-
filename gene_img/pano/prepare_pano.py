@@ -32,6 +32,7 @@ def prepare_pano_depth(cfg):
                 ((disp-disp.min())/(disp.max()-disp.min()))*255)
     np.save(save_file+'/pano_wall_disp_2k',
             ((disp-disp.min())/(disp.max()-disp.min()))*255)
+    np.save(save_file+'/pano_depth_wall_2k', depthmap)
 
     depthmap, disp, mask = capture_pano_depth(
         mesh_total_obj, img_h, rot, pano_cam_center)
