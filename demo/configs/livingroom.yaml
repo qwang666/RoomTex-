@@ -32,9 +32,50 @@ generate:
     switch_point: 0.8
     batch_size: 5
     batch_count: 1
+  
+  floor:
+    prompt: "emauromin style. flat wooden floor of a livingroom with wooden baseboard, top-down view. finely detailed, purism, ue5, a computer rendering, minimalism, minimalproduct design"
+    negative_prompt: "blurry, blur, text, watermark, render,3D,NSFW, nude, CGl, monochrome, B&W. cartoon, painting, smooth, plasticblurry, low-resolution, deep-fried, oversaturated"
+    steps: 50
+    sampler_name: "Euler a"
+    cfg_scale: 6.5
+    width: 1024
+    height: 1024
+    seed: -1
+    sd_model: "sd_xl_base_1.0.safetensors [31e35c80fc]"
+    sd_vae: "sdxl_vae.safetensors"
+    refiner_model: "sd_xl_refiner_1.0.safetensors [7440042bbd]"
+    switch_point: 0.8
+    batch_size: 1
+    batch_count: 1
+    fx: 500
+    fy: 500
+  
+  ceiling:
+    prompt: "emauromin style. flat white ceiling of a livingroom, bottom-up view. finely detailed, purism, ue5, a computer rendering, minimalism, minimalproduct design"
+    negative_prompt: "blurry, blur, text, watermark, render,3D,NSFW, nude, CGl, monochrome, B&W. cartoon, painting, smooth, plasticblurry, low-resolution, deep-fried, oversaturated"
+    steps: 50
+    sampler_name: "Euler a"
+    cfg_scale: 6.5
+    width: 1024
+    height: 1024
+    seed: -1
+    sd_model: "sd_xl_base_1.0.safetensors [31e35c80fc]"
+    sd_vae: "sdxl_vae.safetensors"
+    refiner_model: "sd_xl_refiner_1.0.safetensors [7440042bbd]"
+    switch_point: 0.8
+    batch_size: 1
+    batch_count: 1
+
+  refine:
+    prompt: "breathtaking empty kitchen with wall and floor, award-winning, professional, highly detailed, nothing on the wall"
+    center: [0.0, 0.001, 0.0] #lookat position
+    pos1: [0.0, 0.0, 1.4] #camera on the ceiling
+    pos2: [0.0, 0.0, -1.4] #camera on the floor
 
 img_path:
   pano_all_2K: demo/results/livingroom/pano/image/ori.png
+  pano_tmp_wall_2K: demo/results/livingroom/pano/image/tmp_wall.png
   pano_wall_2K: demo/results/livingroom/pano/image/wall.png
 
 exist_room: True
