@@ -111,8 +111,8 @@ obj_id: ["sofa", "stool", "tvcabinet", "tv", "teatable", "tinysofa", "light"]
 obj_describe: ["a brown leather multi-person sofa", "small brown sofa stool made of cloth", "white tv cabinet", "a tv playing TV show", "a wooden teatable", "a white and smooth armchair", "luxury chandelier"]
 obj_mesh_path:
     [
-        "demo/objects/ivingroom/sofa2.obj",
-        "demo/objects/ivingroom/chair2.obj",
+        "demo/objects/ivingroom/sofa.obj",
+        "demo/objects/ivingroom/chair.obj",
         "demo/objects/ivingroom/tvcabinet.obj",
         "demo/objects/ivingroom/tv.obj",
         "demo/objects/ivingroom/teatable.obj",
