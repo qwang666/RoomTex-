@@ -3,6 +3,8 @@ import trimesh
 import cv2
 import numpy as np
 import os
+import sys
+sys.path.append(os.getcwd())
 import glob
 from utils.mesh.mesh import load_mesh, load_adornment
 from tqdm import tqdm

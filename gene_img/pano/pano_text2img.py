@@ -3,6 +3,9 @@ import io
 import base64
 from PIL import Image
 import cv2
+import sys
+import os
+sys.path.append(os.getcwd())
 from utils.file_tools import load_cfg, check_path
 import argparse
 

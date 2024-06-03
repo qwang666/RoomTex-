@@ -1,5 +1,8 @@
 #这个文件是获得了panorama后处理所有周围环境并且填补地板的代码
 from diffusers import StableDiffusionInpaintPipeline, ControlNetModel, UniPCMultistepScheduler
+import os
+import sys
+sys.path.append(os.getcwd())
 from utils.pipeline_stable_diffusion_controlnet_inpaint import *
 from diffusers.utils import load_image
 
