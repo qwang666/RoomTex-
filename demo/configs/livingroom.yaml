@@ -111,13 +111,13 @@ obj_id: ["sofa", "stool", "tvcabinet", "tv", "teatable", "tinysofa", "light"]
 obj_describe: ["a brown leather multi-person sofa", "small brown sofa stool made of cloth", "white tv cabinet", "a tv playing TV show", "a wooden teatable", "a white and smooth armchair", "luxury chandelier"]
 obj_mesh_path:
     [
-        "demo/objects/ivingroom/sofa.obj",
-        "demo/objects/ivingroom/chair.obj",
-        "demo/objects/ivingroom/tvcabinet.obj",
-        "demo/objects/ivingroom/tv.obj",
-        "demo/objects/ivingroom/teatable.obj",
-        "demo/objects/ivingroom/tinysofa.obj",
-        "demo/objects/ivingroom/light.glb",
+        "demo/objects/livingroom/sofa.obj",
+        "demo/objects/livingroom/chair.obj",
+        "demo/objects/livingroom/tvcabinet.obj",
+        "demo/objects/livingroom/tv.obj",
+        "demo/objects/livingroom/teatable.obj",
+        "demo/objects/livingroom/tinysofa.obj",
+        "demo/objects/livingroom/light.glb",
         
     ]
 obj_init_pos: [[2.8, 0.31, 3.6], [4.0, 0.24, 2.9], [3.0, 0.36, 0.4], [3.0, 1.17, 0.4], [2.8, 0.21, 2.7], [1.7, 0.27, 2.7], [2.5, 2.44, 1.8]]
@@ -128,12 +128,12 @@ adornment: True
 adornment_id: ["frame1", "scroll", "scroll2", "scroll3", "scroll4", "clock"]
 adornment_describe: ["painting frame", "painting scroll","painting scroll","painting scroll","painting scroll","rounder watch"]
 adornment_mesh_path: [
-  "demo/objects/ivingroom/pictureframe.glb",
-  "demo/objects/ivingroom/scroll.glb",
-  "demo/objects/ivingroom/scroll.glb",
-  "demo/objects/ivingroom/scroll.glb",
-  "demo/objects/ivingroom/scroll.glb",
-  "demo/objects/ivingroom/wall_clock.glb"
+  "demo/objects/livingroom/pictureframe.glb",
+  "demo/objects/livingroom/scroll.glb",
+  "demo/objects/livingroom/scroll.glb",
+  "demo/objects/livingroom/scroll.glb",
+  "demo/objects/livingroom/scroll.glb",
+  "demo/objects/livingroom/wall_clock.glb"
 ]
 adornment_pos: [[2.8, 1.7, 3.96], [4.9, 1.5, 2.4], [4.9, 1.5, 1.6], [4.9, 1.5, 0.8], [4.9, 1.5, 3.2], [1.2, 2.0, 3.97]]
 adornment_rot: [[0.0,1.0,0.0], [0.0, 0.5, 0.0], [0.0, 0.5, 0.0], [0.0, 0.5, 0.0], [0.0, 0.5, 0.0], [0.0, 1.0, 0.0]]

@@ -126,7 +126,7 @@ def rotate(obj_world_coords, i):
     return obj_world_coords
 
 
-def load_inpaint_pts(cfg, remove=False):
+def load_inpaint_pts(cfg):
     img_list = []
     world_coords_list = []
     mask_list = []
@@ -189,9 +189,9 @@ def img_cv2_inpaint_obj(img, img_mask):
     return rendered_image
 
 
-def show_all(cfg, pose, i, save_path, scale=2, inpaint=False, remove=False):
+def show_all(cfg, pose, i, save_path, scale=2, inpaint=False):
     scale = scale
-    total_img, total_world_coords, total_mask = load_inpaint_pts(cfg, remove)
+    total_img, total_world_coords, total_mask = load_inpaint_pts(cfg)
     print(total_img.shape,  total_world_coords.shape, total_mask.shape)
     room_name = cfg['save_path'].split('/')[-1]
 
@@ -216,16 +216,17 @@ def show_all(cfg, pose, i, save_path, scale=2, inpaint=False, remove=False):
     depth_mask = (img_warp_depth-0.02) < depth
     img_depth_warp = img_warp*depth_mask[:, :, np.newaxis]
 
-    # cv2.imwrite('{}/img_{}_{}k_{}.png'.format(save_path, i, scale, remove), cv2.cvtColor(img_depth_warp, cv2.COLOR_BGR2RGB))
-    cv2.imwrite('{}/mask_{}_{}k_{}.png'.format(save_path,
-                i, scale, remove), mask)
+    # cv2.imwrite('{}/img_{}_{}k.png'.format(save_path, i, scale), cv2.cvtColor(img_depth_warp, cv2.COLOR_BGR2RGB))
+    cv2.imwrite('{}/mask_{}_{}k.png'.format(save_path,
+                i, scale), mask)
     print("warp {} done".format(i))
     if inpaint:
         img_inpaint_depth_warp = img_cv2_inpaint_obj(img_depth_warp, mask)
-        cv2.imwrite('{}/inpaint_{}_img_{}k_{}.png'.format(save_path, i, scale,
-                    remove), cv2.cvtColor(img_inpaint_depth_warp, cv2.COLOR_BGR2RGB))
+        cv2.imwrite('{}/inpaint_{}_img_{}k.png'.format(save_path, i, scale), 
+                    cv2.cvtColor(img_inpaint_depth_warp, cv2.COLOR_BGR2RGB))
         print("inpaint Done")
     print("save all_{}".format(i))
+
 
 
 def save_empty_pers(cfg, save_path, i, pose, scale, inpaint=False):
@@ -238,27 +239,33 @@ def save_empty_pers(cfg, save_path, i, pose, scale, inpaint=False):
         pano_wall_4K_path, pano_wall_depth_4K_path, scale, pose, rot=-cfg['pano']['rot'])
 
     check_path(save_path)
-    cv2.imwrite('{}/room_2k_{}.png'.format(save_path, i),
+    cv2.imwrite('{}/room_{}k_{}.png'.format(save_path, scale, i),
                 cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
     print("save all_{}".format(save_path))
     if inpaint:
         inpaint_pano_img = img_cv2_inpaint_room(img)
-        cv2.imwrite('{}/inpaint_room_2k_{}.png'.format(save_path, i),
+        cv2.imwrite('{}/inpaint_room_{}k_{}.png'.format(save_path, scale, i),
                     cv2.cvtColor(inpaint_pano_img, cv2.COLOR_BGR2RGB))
 
 
 if __name__ == "__main__":
     cfg = load_cfg('demo/configs/livingroom.yaml')
-    save_path = "demo/results/livingroom"
+    save_path = cfg['save_path'] + '/Figure'
     position = torch.tensor([[[-1.2, 0.5, 0.4]],
 
                              ])
     center = torch.tensor([[[1.5, -1.1, -0.2]],
 
                            ])
-
+    scale = 2 # 2K resolution
     for i in range(len(position)):
         print(i)
         pose = get_poses(position[i], center[i])
-        show_all(cfg, pose, i, save_path, 2, True)
-        save_empty_pers(cfg, save_path, i, pose, 2, inpaint=True)
+        show_all(cfg, pose, i, save_path, scale, True)
+        save_empty_pers(cfg, save_path, i, pose, scale, inpaint=True)
+        objs = cv2.imread('{}/inpaint_{}_img_{}k_{}.png'.format(save_path, i, scale))
+        mask = cv2.imread('{}/mask_{}_{}k.png'.format(save_path, i, scale))
+        room = cv2.imread('{}/inpaint_room_{}k_{}.png'.format(save_path, scale, i))
+        render_img = objs*(mask>0) + room*(mask==0) 
+        cv2.imwrite('{}/render_img_{}k_{}.png'.format(save_path, scale, i),
+                    cv2.cvtColor(render_img, cv2.COLOR_BGR2RGB))
