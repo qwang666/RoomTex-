@@ -6,6 +6,15 @@ This is the official implementation of RoomTex: Texturing Compositional Indoor S
 <img src="teaser.png" width="100%"/>
 </div>
 
+## Installation
+
+Tested on A100, V100. If your GPU memory is not enough, you can reduce the `batch_size`&`batch_count` in `configs` files.
+
+```sh
+conda create -n RoomTex python=3.8
+pip install -r requirements.txt
+```
+_other versions of python and pytorch should also work fine._
 ## Stable Diffusion and ControlNet
 
 Deploy `stable-diffusion-webui` as [stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui/tree/5121846d34d74aee9b55d48d35c1559a710051b0)
@@ -67,14 +76,28 @@ python gene_img/pano/refine_pano.py --cfg demo/configs/livingroom.yaml --port 78
 python scripts/prepare_pers.py
 ```
 
-## Genetate objects
+## Genetate objects by iterative inpainting
 
 ```sh
 python scripts/iterative_gene.py --cfg demo/configs/livingroom.yaml --port 7860 --id 0
 
 python scripts/adornment_refine.py --cfg demo/configs/livingroom.yaml --port 7860 --id 0
 ```
-_port is the sd webui port, id is the object id_
+_port is the sd webui port, id is the object id._
+
+_If you have multify GPUs, you can run it parallelly._
+_For example, first establish N webui services_
+
+```sh
+CUDA_VISIBLE_DEVICES=0 bash webui.sh --nowebui --port 7860
+...
+CUDA_VISIBLE_DEVICES=N bash webui.sh --nowebui --port N
+```
+Then run iterative inpainting like:
+```sh
+python scripts/iterative_gene.py --cfg demo/configs/livingroom.yaml --port N --id n
+...
+```
 
 ## Render figures of the scene, need to set poses
 ```sh
