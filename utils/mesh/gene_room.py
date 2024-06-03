@@ -2,6 +2,8 @@ import numpy as np
 import random
 import os
 import yaml
+import sys
+sys.path.append(os.getcwd())
 from utils.file_tools import check_path, load_cfg
 from utils.wall_tools import buil_wall, get_wall_pts, buil_baseboard_wall, build_hole_wall
 from utils.mesh_tools import boundary_mesh, inner_boundary_mesh
