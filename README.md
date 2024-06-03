@@ -77,7 +77,7 @@ python gene_img/pano/refine_pano.py --cfg demo/configs/livingroom.yaml --port 78
 
 ### Reproject the panorama to initial perspective image
 ```sh
-python scripts/prepare_pers.py
+python scripts/prepare_pers.py --cfg demo/configs/livingroom.yaml
 ```
 
 ### Genetate objects by iterative inpainting
