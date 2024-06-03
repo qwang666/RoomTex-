@@ -1,4 +1,7 @@
 import argparse
+import os
+import sys
+sys.path.append(os.getcwd())
 from gene_img.pano.prepare_pano import prepare_pano_depth
 from scripts.prepare_pers import pre_pers_depth
 from utils.file_tools import load_cfg
