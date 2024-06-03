@@ -270,7 +270,7 @@ def render_room(cfg, obj_path, file_name):
 
         # save initial pano2pers img
         init_img = get_init_rgb_from_pano(
-            pano_all_4K_path, pano_all_depth_4K_path, c2w, f=f, rot=rot)
+            pano_all_4K_path, pano_all_depth_4K_path, 1, c2w, f=f, rot=rot)
         cv2.imwrite('{}/{}/img_init.png'.format(obj_path, file_name),
                     cv2.cvtColor(init_img, cv2.COLOR_BGR2RGB))
     else:
@@ -281,7 +281,7 @@ def render_room(cfg, obj_path, file_name):
         c2w = torch.from_numpy(c2w)
         # save empty room img
         img = get_init_rgb_from_pano(
-            pano_wall_4K_path, pano_wall_depth_4K_path, c2w, rot=rot)
+            pano_wall_4K_path, pano_wall_depth_4K_path, 1, c2w, rot=rot)
         cv2.imwrite("{}/{}/room_empty.png".format(obj_path,
                     file_name), cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
 
