@@ -236,7 +236,7 @@ def save_empty_pers(cfg, save_path, i, pose, scale, inpaint=False):
     pano_wall_depth_4K_path = file_path+'/pano/' + 'pano_depth_wall_4k.npy'
 
     img = get_init_rgb_from_pano(
-        pano_wall_4K_path, pano_wall_depth_4K_path, scale, pose, rot=-cfg['pano']['rot'])
+        pano_wall_4K_path, pano_wall_depth_4K_path, scale, pose, rot=-cfg['pano']['rot'], inpaint=False)
 
     check_path(save_path)
     cv2.imwrite('{}/room_{}k_{}.png'.format(save_path, scale, i),

@@ -7,7 +7,7 @@ from functools import partial
 import os
 
 metric = CLIPScore(
-    model_name_or_path="/cpfs01/user/wangqi/openai/clip-vit-base-patch16")
+    model_name_or_path="/openai/clip-vit-base-patch16")
 
 
 def calculate_clip_score(images, prompts):
