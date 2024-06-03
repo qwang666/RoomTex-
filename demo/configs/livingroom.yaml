@@ -2,7 +2,7 @@ save_path: "demo/results/livingroom"
 
 generate:
   pano:
-    prompt: "emauromin style. 720 degrees panorama photo view of livingroom with landscape painting, Chinese calligraphy and painting. a brown leather multi-person sofa, small brown sofa stool made of cloth, white tv cabinet, a tv playing TV show, a wooden teatable, a white and smooth armchair, luxury chandelier, rounded watch. finely detailed, purism, ue5, a computer rendering, minimalism, minimalproduct design"
+    prompt: "emauromin style. 720 degrees panorama photo view of livingroom with landscape painting, Chinese calligraphy and painting. a brown leather multi-person sofa, small blue sofa stool made of cloth, white tv cabinet, a tv playing TV show, a wooden teatable, a white and smooth armchair, luxury chandelier, rounded watch. finely detailed, purism, ue5, a computer rendering, minimalism, minimalproduct design"
     negative_prompt: "blurry, blur, text, watermark, render,3D,NSFW, nude, CGl, monochrome, B&W. cartoon, painting, smooth, plasticblurry, low-resolution, deep-fried, oversaturated"
     steps: 50
     sampler_name: "Euler a"
