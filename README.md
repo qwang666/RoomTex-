@@ -13,7 +13,7 @@ Code will be released soon
 
 ## Citation
 ```
-@misc{wang2024roomtex,
+@article{wang2024roomtex,
       title={RoomTex: Texturing Compositional Indoor Scenes via Iterative Inpainting}, 
       author={Qi Wang and Ruijie Lu and Xudong Xu and Jingbo Wang and Michael Yu Wang and Bo Dai and Gang Zeng and Dan Xu},
       year={2024},
