@@ -8,7 +8,7 @@ Code will be released soon
 
 ### [Project Page](https://qwang666.github.io/RoomTex/) | [Paper](https://arxiv.org/abs/2406.02461)
 <div align=center>
-<img src="teaser.png" width="100%"/>
+<img src="teaser.jpg" width="100%"/>
 </div>
 
 ## Citation
