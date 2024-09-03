@@ -1,0 +1,140 @@
+save_path: "demo/results/livingroom"
+
+generate:
+  pano:
+    prompt: "emauromin style. 720 degrees panorama photo view of livingroom with landscape painting, Chinese calligraphy and painting. a brown leather multi-person sofa, small blue sofa stool made of cloth, white tv cabinet, a tv playing TV show, a wooden teatable, a white and smooth armchair, luxury chandelier, rounded watch. finely detailed, purism, ue5, a computer rendering, minimalism, minimalproduct design"
+    negative_prompt: "blurry, blur, text, watermark, render,3D,NSFW, nude, CGl, monochrome, B&W. cartoon, painting, smooth, plasticblurry, low-resolution, deep-fried, oversaturated"
+    steps: 50
+    sampler_name: "Euler a"
+    cfg_scale: 6.5
+    width: 2048
+    height: 1024
+    seed: -1
+    sd_model: "sd_xl_base_1.0.safetensors [31e35c80fc]"
+    sd_vae: "sdxl_vae.safetensors"
+    refiner_model: "sd_xl_refiner_1.0.safetensors [7440042bbd]"
+    switch_point: 0.8
+    batch_size: 3
+    batch_count: 2
+
+  pers_inpaint:
+    prompt: "emauromin style. finely detailed, purism, ue5, a computer rendering, minimalism, minimalproduct design"
+    negative_prompt: "blurry, blur, text, watermark, render,3D,NSFW, nude, CGl, monochrome, B&W. cartoon, painting, smooth, plasticblurry, low-resolution, deep-fried, oversaturated"
+    steps: 50
+    sampler_name: "Euler a"
+    cfg_scale: 6.5
+    width: 1024
+    height: 1024
+    seed: -1
+    sd_model: "sd_xl_base_1.0.safetensors [31e35c80fc]"
+    sd_vae: "sdxl_vae.safetensors"
+    refiner_model: "sd_xl_refiner_1.0.safetensors [7440042bbd]"
+    switch_point: 0.8
+    batch_size: 5
+    batch_count: 1
+  
+  floor:
+    prompt: "emauromin style. flat wooden floor of a livingroom with wooden baseboard, top-down view. finely detailed, purism, ue5, a computer rendering, minimalism, minimalproduct design"
+    negative_prompt: "blurry, blur, text, watermark, render,3D,NSFW, nude, CGl, monochrome, B&W. cartoon, painting, smooth, plasticblurry, low-resolution, deep-fried, oversaturated"
+    steps: 50
+    sampler_name: "Euler a"
+    cfg_scale: 6.5
+    width: 1024
+    height: 1024
+    seed: -1
+    sd_model: "sd_xl_base_1.0.safetensors [31e35c80fc]"
+    sd_vae: "sdxl_vae.safetensors"
+    refiner_model: "sd_xl_refiner_1.0.safetensors [7440042bbd]"
+    switch_point: 0.8
+    batch_size: 1
+    batch_count: 1
+    fx: 500
+    fy: 500
+  
+  ceiling:
+    prompt: "emauromin style. flat white ceiling of a livingroom, bottom-up view. finely detailed, purism, ue5, a computer rendering, minimalism, minimalproduct design"
+    negative_prompt: "blurry, blur, text, watermark, render,3D,NSFW, nude, CGl, monochrome, B&W. cartoon, painting, smooth, plasticblurry, low-resolution, deep-fried, oversaturated"
+    steps: 50
+    sampler_name: "Euler a"
+    cfg_scale: 6.5
+    width: 1024
+    height: 1024
+    seed: -1
+    sd_model: "sd_xl_base_1.0.safetensors [31e35c80fc]"
+    sd_vae: "sdxl_vae.safetensors"
+    refiner_model: "sd_xl_refiner_1.0.safetensors [7440042bbd]"
+    switch_point: 0.8
+    batch_size: 1
+    batch_count: 1
+
+  refine:
+    prompt: "breathtaking empty kitchen with wall and floor, award-winning, professional, highly detailed, nothing on the wall"
+    center: [0.0, 0.001, 0.0] #lookat position
+    pos1: [0.0, 0.0, 1.4] #camera on the ceiling
+    pos2: [0.0, 0.0, -1.4] #camera on the floor
+
+img_path:
+  pano_all_2K: demo/results/livingroom/pano/image/ori.png
+  pano_tmp_wall_2K: demo/results/livingroom/pano/image/tmp_wall.png
+  pano_wall_2K: demo/results/livingroom/pano/image/wall.png
+
+exist_room: True
+room_mesh_path: "demo/objects/livingroom/room/normal_rectangle_layer3_baseboardTrue.obj"
+boundry_mesh_path: "demo/objects/livingroom/room/boundry.obj"
+room:
+  x_min: 0.0
+  x_max: 5.0
+  y_min: 0.0
+  y_max: 4.0
+  wall_thick: 0.2
+  room_height: 2.8
+  door_height: [2.0]
+  window_height: [2.0]
+
+  wall_type: ["wall", "wall", "door", "window_wall"]
+  wall_pts:
+    [
+      [[0.0, 4.0, 0.0], [5.0, 4.0, 0]],
+      [[5.0, 0.0, 0], [5.0, 4.0, 0]],
+      [[0.0, 0, 0], [0.5, 0, 0], [1.5, 0, 0], [5.0, 0, 0]],
+      [[0, 0, 0], [0, 1.5, 0], [0, 3.0, 0], [0, 4.0, 0]],
+    ]
+  baseboard: True
+  thick_out: True
+  ceil_type: "random" # ["random", "None", "normal", "cycle", "cycle_normal"]
+
+pano:
+  rot: 2.0
+  pano_cam_center: [2.5, 1.4, 2.0]
+
+obj_id: ["sofa", "stool", "tvcabinet", "tv", "teatable", "tinysofa", "light"]
+obj_describe: ["a brown leather multi-person sofa", "small brown sofa stool made of cloth", "white tv cabinet", "a tv playing TV show", "a wooden teatable", "a white and smooth armchair", "luxury chandelier"]
+obj_mesh_path:
+    [
+        "demo/objects/livingroom/sofa.obj",
+        "demo/objects/livingroom/chair.obj",
+        "demo/objects/livingroom/tvcabinet.obj",
+        "demo/objects/livingroom/tv.obj",
+        "demo/objects/livingroom/teatable.obj",
+        "demo/objects/livingroom/tinysofa.obj",
+        "demo/objects/livingroom/light.glb",
+        
+    ]
+obj_init_pos: [[2.8, 0.31, 3.6], [4.0, 0.24, 2.9], [3.0, 0.36, 0.4], [3.0, 1.17, 0.4], [2.8, 0.21, 2.7], [1.7, 0.27, 2.7], [2.5, 2.44, 1.8]]
+obj_init_rot: [[0.0, 0.5, 0.5], [-0.5, -0.5, 0.0], [-0.5, -0.5, 0.0], [-0.5, 0.0, 0.0], [-0.5, 0.0, 0.0], [0.0, 0.5, 0.5], [0.0, 0.0, 0.0]]
+obj_init_scale: [0.9, 0.4, 0.9, 0.8, 0.6, 0.5, 0.8]
+
+adornment: True
+adornment_id: ["frame1", "scroll", "scroll2", "scroll3", "scroll4", "clock"]
+adornment_describe: ["painting frame", "painting scroll","painting scroll","painting scroll","painting scroll","rounder watch"]
+adornment_mesh_path: [
+  "demo/objects/livingroom/pictureframe.glb",
+  "demo/objects/livingroom/scroll.glb",
+  "demo/objects/livingroom/scroll.glb",
+  "demo/objects/livingroom/scroll.glb",
+  "demo/objects/livingroom/scroll.glb",
+  "demo/objects/livingroom/wall_clock.glb"
+]
+adornment_pos: [[2.8, 1.7, 3.96], [4.9, 1.5, 2.4], [4.9, 1.5, 1.6], [4.9, 1.5, 0.8], [4.9, 1.5, 3.2], [1.2, 2.0, 3.97]]
+adornment_rot: [[0.0,1.0,0.0], [0.0, 0.5, 0.0], [0.0, 0.5, 0.0], [0.0, 0.5, 0.0], [0.0, 0.5, 0.0], [0.0, 1.0, 0.0]]
+adornment_scale: [1.0, 0.9, 0.9, 0.9, 0.9, 0.3]
